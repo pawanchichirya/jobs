@@ -25,7 +25,8 @@ const Register = () => {
 
   const [values, setValues] = useState(initialState);
 
-  const { isLoading, showAlert, displayAlert, registerUser } = useAppContext();
+  const { isLoading, showAlert, displayAlert, registerUser, loginUser } =
+    useAppContext();
 
   const toggleMember = () => {
     setValues({ ...values, isMember: !values.isMember });
@@ -43,7 +44,7 @@ const Register = () => {
       return;
     }
     if (isMember) {
-      console.log("member");
+      loginUser({ email, password });
     } else {
       registerUser({ name, email, password });
     }
