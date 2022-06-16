@@ -105,6 +105,21 @@ const reducer = (state, action) => {
       alertText: action.payload.msg,
     };
   }
+  if (action.type === TOGGLE_SIDEBAR) {
+    return {
+      ...state,
+      showSidebar: !state.showSidebar,
+    };
+  }
+  if (action.type === LOGOUT_USER) {
+    return {
+      ...initialState,
+      user:null,
+      token:null,
+      userLocation:null,
+      jobLocation:null,
+    };
+  }
   throw new Error(`no such action : ${action.type}`);
 };
 

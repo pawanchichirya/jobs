@@ -10,6 +10,7 @@
     "mongoose": "^6.3.8",
     "morgan": "^1.10.0",
     "normalize.css": "^8.0.1",
+    "react-icons": "^4.4.0",
     "validator": "^13.7.0"
   },
   "name": "job-tracker",
