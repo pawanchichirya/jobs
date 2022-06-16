@@ -114,10 +114,38 @@ const reducer = (state, action) => {
   if (action.type === LOGOUT_USER) {
     return {
       ...initialState,
-      user:null,
-      token:null,
-      userLocation:null,
-      jobLocation:null,
+      user: null,
+      token: null,
+      userLocation: null,
+      jobLocation: null,
+    };
+  }
+  if (action.type === UPDATE_USER_BEGIN) {
+    return {
+      ...state,
+      isLoading: true,
+    };
+  }
+  if (action.type === UPDATE_USER_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+      token: action.payload.token,
+      user: action.payload.user,
+      userLocation: action.payload.userLocation,
+      jobLocation: action.payload.jobLocation,
+      showAlert: true,
+      alertType: "success",
+      alertText: `${state.user.name}'s Profile Updated!!!`,
+    };
+  }
+  if (action.type === UPDATE_USER_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: "danger",
+      alertText: action.payload.msg,
     };
   }
   throw new Error(`no such action : ${action.type}`);
